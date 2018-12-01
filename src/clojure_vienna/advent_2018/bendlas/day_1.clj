@@ -1,9 +1,9 @@
-(ns clojure-vienna.bendlas.day-1
+(ns clojure-vienna.advent-2018.bendlas.day-1
   (:require [clojure.java.io :as io]))
 
 (def inputs
   (into [] (map #(Long/parseLong %))
-        (line-seq (io/reader (io/resource "clojure-vienna/bendlas/day-1")))))
+        (line-seq (io/reader (io/resource "clojure-vienna/advent-2018/bendlas/day-1")))))
 
 (def result-1
   (reduce + 0 inputs))
