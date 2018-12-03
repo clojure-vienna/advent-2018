@@ -1,7 +1,8 @@
 (ns clojure-vienna.advent-2018.bendlas.day-2
   (:require [clojure-vienna.advent-2018 :as main]
             [clojure-vienna.runner :as runner]
-            [clojure.set :as set]))
+            [clojure.set :as set]
+            [clojure-vienna.advent-2018.bendlas.util :refer [self-join]]))
 
 (defn calc-1 [inputs]
   (as-> (transduce
@@ -19,30 +20,6 @@
       (* v2 v3)))
 
 ;; calc-2
-
-;; self join
-
-(defn wrapped-reducer [rf]
-  (completing
-   #(let [s (rf %1 %2)]
-      (if (reduced? s)
-        (reduced s)
-        s))
-   rf))
-
-(defn self-join [coll]
-  (eduction
-   (take-while some?)
-   (fn [xf]
-     (completing
-      (fn [s [h & nxt]]
-        (reduce (wrapped-reducer
-                 #(xf %1 [h %2]))
-                s nxt))
-      xf))
-   (iterate next coll)))
-
-;; calc-2 logic
 
 (defn compare-inputs [[i1 i2]]
   (assert (= (count i1)

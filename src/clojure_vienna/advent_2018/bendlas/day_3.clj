@@ -1,6 +1,6 @@
 (ns clojure-vienna.advent-2018.bendlas.day-3
   (:require [clojure-vienna.advent-2018 :as main]
-            [clojure-vienna.advent-2018.bendlas.day-2 :refer [self-join]]
+            [clojure-vienna.advent-2018.bendlas.util :refer [self-join]]
             [clojure-vienna.runner :as runner]))
 
 (defrecord Coord [x y])
