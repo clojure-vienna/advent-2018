@@ -13,7 +13,9 @@
 ;; Parsers for daily inputs
 
 (defn read-input [user day]
-  (runner/read-input @all-solutions user day))
+  (let [[tag & nxt :as tagged] (runner/read-input @all-solutions user day)]
+    (if (= ::runner/input tag)
+      nxt tagged)))
 
 ;; API
 
