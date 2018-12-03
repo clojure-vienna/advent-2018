@@ -58,10 +58,6 @@
        [(runner/curry 2 ->Coord)]))))
 
 (defn calc [input]
-  (count
-   (into #{}
-         (mapcat overlapping-coordinates)
-         (self-join input)))
   (into []
         (comp (map (juxt identity overlapping-coordinates))
               (y-xf
