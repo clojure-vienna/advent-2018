@@ -2,13 +2,15 @@
   (:require [clojure-vienna.advent-2018.bendlas.util :as util]
             [clojure-vienna.advent-2018 :as main]))
 
-(defn polar-opposite? [c1 c2]
-  (and
-   (some? c1) (some? c2)
-   (= (Character/toLowerCase c1)
-      (Character/toLowerCase c2))
-   (not= (Character/isUpperCase c1)
-         (Character/isUpperCase c2))))
+(def polar-opposite?
+  (memoize
+   (fn [c1 c2]
+     (and
+      (some? c1) (some? c2)
+      (= (Character/toLowerCase c1)
+         (Character/toLowerCase c2))
+      (not= (Character/isUpperCase c1)
+            (Character/isUpperCase c2))))))
 
 (defn react [input]
   (-> input
