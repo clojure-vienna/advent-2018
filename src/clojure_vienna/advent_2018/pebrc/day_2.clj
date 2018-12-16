@@ -1,4 +1,4 @@
- (ns clojure-vienna.advent-2018.pebrc.day-2
+(ns clojure-vienna.advent-2018.pebrc.day-2
   (:require [clojure-vienna.advent-2018 :as main]))
 
 (defn day-2-1 [inputs]
