@@ -19,7 +19,11 @@
       (fn
         ([s] (-> s
                  (xf (xf1 (unwrap-reduced @sv1)))
-                 (xf (xf2 (unwrap-reduced @sv2)))
+                 (as-> s
+                     (cond-> s
+                       (not (reduced? s))
+                       (xf (xf2 (unwrap-reduced @sv2)))))
+                 unwrap-reduced
                  xf))
         ([s v]
          (when-not (reduced? @sv1)
